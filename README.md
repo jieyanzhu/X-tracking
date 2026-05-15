@@ -4,21 +4,23 @@ Track X/Twitter posts by specific authors using Nitter RSS feeds.
 
 ## Install
 
-Requires Python 3.12+.
+Requires Python 3.12+. Run in a venv environment.
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ## Commands
 
 ```bash
-xtrack add <username>     # Start tracking an author
-xtrack remove <username>  # Stop tracking an author
-xtrack list               # List tracked authors and post counts
-xtrack fetch [username]   # Fetch latest posts (all authors, or one)
-xtrack new [username]     # Show posts from the most recent fetch
-xtrack watch              # Fetch continuously every 15 minutes (-i to change)
+python -m src.cli add <username>     # Start tracking an author
+python -m src.cli remove <username>  # Stop tracking an author
+python -m src.cli list               # List tracked authors and post counts
+python -m src.cli fetch [username]   # Fetch latest posts (all authors, or one)
+python -m src.cli new [username]     # Show posts from the most recent fetch
+python -m src.cli watch              # Fetch continuously every 15 minutes (-i to change)
 ```
 
 ## Configuration
