@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+# Fallback Nitter mirrors used when XT_NITTER_INSTANCES env var is not set.
 _DEFAULT_INSTANCES = [
     "https://nitter.net",
     "https://nitter.privacydev.net",
@@ -23,6 +24,7 @@ class Config:
     def _parse_instances(self):
         val = os.environ.get("XT_NITTER_INSTANCES", "")
         if val:
+            # Strip trailing slashes — RSS URLs are built as {instance}/{username}/rss
             return [u.strip().rstrip("/") for u in val.split(",") if u.strip()]
         return _DEFAULT_INSTANCES
 

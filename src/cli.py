@@ -66,7 +66,8 @@ def cmd_add(config: Config, username: str) -> int:
     init_db(config.data_dir)
     username = username.lower().lstrip("@")
 
-    # Validate by attempting a fetch first
+    # Fetch before adding: validates the username exists and seeds initial posts
+    # in one step so the user doesn't need a separate fetch command.
     try:
         display_name, posts = fetch_posts_for_author(
             username, config.nitter_instances, config.user_agent, config.request_timeout
@@ -83,7 +84,7 @@ def cmd_add(config: Config, username: str) -> int:
         logger.info("@%s is already tracked.", username)
         return 0
 
-    # Seed with the posts we just fetched
+    # Stamp author_username onto each post so insert_posts can group by author.
     for p in posts:
         p["author_username"] = username
     n = insert_posts(config.data_dir, posts)

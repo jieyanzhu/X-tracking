@@ -21,6 +21,7 @@ def fetch_posts_for_author(
     Tries instances in random order. Returns empty list (not error) if author has
     no posts or the account is private/protected.
     """
+    # Shuffle to distribute load across public Nitter mirrors.
     shuffled = list(instances)
     random.shuffle(shuffled)
 
@@ -36,11 +37,15 @@ def fetch_posts_for_author(
             if resp.status_code != 200:
                 logger.warning("%s returned HTTP %s", instance, resp.status_code)
                 continue
+            # Some Nitter instances return HTML error pages instead of proper HTTP
+            # errors. A very short body is a heuristic for a bad response.
             if len(resp.content) < 100:
                 logger.warning("%s returned short response (%d bytes)", instance, len(resp.content))
                 continue
 
             posts, display_name = _parse_rss(resp.content)
+            # An empty feed (zero entries) is legitimate — the account may have no
+            # posts or be private. Continue trying other instances for completeness.
             if not posts:
                 logger.warning("%s returned empty/parseable feed for %s", instance, username)
                 continue

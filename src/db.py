@@ -34,6 +34,8 @@ def _read_authors(data_dir: str) -> list[dict]:
 
 
 def _write_authors(data_dir: str, authors: list[dict]) -> None:
+    # authors.csv is fully rewritten on every mutation (read → modify → write).
+    # This is safe for a single-process CLI but not for concurrent access.
     path = _authors_path(data_dir)
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=AUTHORS_FIELDS)
@@ -51,6 +53,8 @@ def _read_posts(data_dir: str, username: str) -> list[dict]:
 
 
 def _append_posts(data_dir: str, username: str, posts: list[dict]) -> None:
+    # Post CSVs are append-only, unlike authors.csv which is fully rewritten.
+    # This avoids rewriting potentially large files on every insert.
     path = _posts_path(data_dir, username)
     exists = path.exists()
     with open(path, "a", newline="", encoding="utf-8") as f:
