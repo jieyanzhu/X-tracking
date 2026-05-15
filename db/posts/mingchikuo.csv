@@ -1,0 +1,181 @@
+id,content,url,published_at,fetched_at
+2054987772289810884,"<p><a href=""http://x.com/i/article/2054980064337711104"">x.com/i/article/205498006433…</a></p>",https://nitter.net/mingchikuo/status/2054987772289810884#m,"Thu, 14 May 2026 18:10:39 GMT",2026-05-15 06:07:05
+2054987753805545742,"<p><a href=""http://x.com/i/article/2054980047539466240"">x.com/i/article/205498004753…</a></p>",https://nitter.net/mingchikuo/status/2054987753805545742#m,"Thu, 14 May 2026 18:10:34 GMT",2026-05-15 06:07:05
+2051523855286776034,"<p>【Industry Check Update】OpenAI appears to be fast-tracking its first AI agent phone, with mass production targeted as early as 1H27. Potential drivers include supporting a year-end IPO narrative and intensifying competition in AI agent phones. MediaTek currently appears better positioned to become the sole processor supplier, with the device set to use a customized version of the Dimensity 9600, built on TSMC’s N2P node in 2H26. The ISP is the headline spec, with an enhanced HDR pipeline improving real-world visual sensing. Other key specs include a dual-NPU architecture for heterogeneous AI compute, LPDDR6 + UFS 5.0 to ease memory bottlenecks, and pKVM + inline hashing for security. If development stays on track, combined 2027–2028 shipments could reach around 30 million units.</p>
+<hr />
+<blockquote>
+<b>郭明錤｜Ming-Chi Kuo (@mingchikuo)</b>
+<p>
+<p><a href=""http://x.com/i/article/2048582516391751680"">x.com/i/article/204858251639…</a></p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/mingchikuo/status/2048587389791269182#m"">https://nitter.net/mingchikuo/status/2048587389791269182#m</a>
+</footer>
+</blockquote>",https://nitter.net/mingchikuo/status/2051523855286776034#m,"Tue, 05 May 2026 04:46:17 GMT",2026-05-15 06:07:05
+2051523844540899386,"<p>【產業調查更新】OpenAI 可能正加速首款 AI agent 手機開發，目標最快於 1H27 量產，考量原因或包括有利年底 IPO 敘事、AI agent 手機競爭加速等。目前聯發科更有可能獨家取得處理器訂單，該機預計採用基於天璣 9600 的客製版本，並於 2H26 由台積電 N2P 生產。ISP 強化高動態範圍輸出，有利真實世界視覺感知，故為規格焦點；其他關鍵規格包括雙NPU架構（AI 算力分層）、LPDDR6 + UFS 5.0（緩解記憶體瓶頸）、pKVM + inline hashing（安全性）等。若開發順利，預計 2027 與 2028 年共出貨約 3,000 萬支。</p>
+<hr />
+<blockquote>
+<b>郭明錤｜Ming-Chi Kuo (@mingchikuo)</b>
+<p>
+<p><a href=""http://x.com/i/article/2048582573291606016"">x.com/i/article/204858257329…</a></p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/mingchikuo/status/2048587369394381143#m"">https://nitter.net/mingchikuo/status/2048587369394381143#m</a>
+</footer>
+</blockquote>",https://nitter.net/mingchikuo/status/2051523844540899386#m,"Tue, 05 May 2026 04:46:14 GMT",2026-05-15 06:07:05
+2050920712232391012,"<p>Some quick thoughts on Intel's EMIB-T packaging for the new 2H27 Google TPU (Humufish). Based on my industry checks:<br />
+<br />
+【How to read EMIB-T's 90% yield?】<br />
+<br />
+1. Given Intel's track record running EMIB in mass production, hitting 90% technology validation yield on EMIB-T (still under development) is a very positive but reasonable data point.<br />
+<br />
+2. Intel benchmarks EMIB production/assembly yield against FCBGA. Industry FCBGA yield today is generally above 98%.<br />
+<br />
+3. On yield, getting from 90% to 98% is harder than getting from project kickoff to 90%. And technology validation yield ≠ final production yield, especially with some Humufish specs still unfinalized. So long-term, I'm positive on Intel's advanced packaging story. Near to mid-term, I'm staying cautious on how they get there.<br />
+<br />
+【From 90% to 98%. Looks like just a few points. Does Google care? Absolutely】<br />
+<br />
+1. Google recently asked TSMC how much it could save by placing wafer orders for Humufish's main compute die (designed in-house by Google) directly, rather than routing them through MediaTek.<br />
+<br />
+2. Google and MediaTek have run a semi-COT model since day one (8t). MediaTek's mark-up sits mostly on the parts it designs itself, so whether Google places the wafer orders for main compute die directly isn't a key swing factor for MediaTek's earnings trajectory.<br />
+<br />
+3. But Google even probing whether it can squeeze out the pass-through mark-up on wafer orders tells you something: Google has shifted from easygoing buyer to hard-nosed on cost. The reason is simple: to take on Nvidia head-on, cost is Google's edge, which makes EMIB-T production yield Google's problem to solve. For context, TSMC's yield target on 5.5-reticle CoWoS in 2026 also starts at 98%.<br />
+<br />
+【TSMC's position】<br />
+<br />
+1. My understanding is TSMC is still working out how much advanced-node capacity to allocate to Humufish in 2H27, for two reasons: (1) it still wants the back-end packaging orders, though looks unlikely for now, and that's by design on Google's part; and (2) it's still gauging actual back-end output from EMIB-T, to avoid misallocating scarce advanced-node capacity.<br />
+<br />
+2. Humufish's effective back-end output hinges on both EMIB-T and substrates, and both need to be tracked together.<br />
+<br />
+3. On the Humufish semi-COT model, TSMC also prefers MediaTek to place the wafer orders for the main compute die. Beyond the close working relationship, the key point is MediaTek is TSMC's third-largest advanced-node customer in 2025. If TPU orders shift, MediaTek's scale makes it a natural buffer for TSMC to rebalance its wafer allocation mix.</p>",https://nitter.net/mingchikuo/status/2050920712232391012#m,"Sun, 03 May 2026 12:49:36 GMT",2026-05-15 06:07:05
+2050920697325609220,"<p>閒聊 Intel EMIB-T 封裝的 2H27 新款 Google TPU（Humufish）。以下根據我的產業調查：<br />
+<br />
+【EMIB-T 90% 良率，該怎麼看？】<br />
+<br />
+1. 基於 Intel 已經有穩定生產 EMIB 的經驗，開發中的 EMIB-T 技術驗證良率達到 90%，是很正向但也合理的訊號。<br />
+<br />
+2. Intel 把 FCBGA 設定為 EMIB 生產（組裝）良率的比較標竿。目前業界 FCBGA 的生產良率約在 98% 以上。<br />
+<br />
+3. 從良率角度，90%→98% 難度高於從開案 → 90%。此外，技術驗證良率與成品生產良率也是兩回事（特別是 Humufish 仍有規格未定案）。所以我雖正向看待 Intel 先進封裝長期發展，但中短期內仍會謹慎關注 Intel 如何面對這些挑戰。<br />
+<br />
+【從 90% 到 98%，表面上才差個幾%，Google 會在意嗎？當然會】<br />
+<br />
+1. Google 近期詢問過台積電，自行投片 Humufish 的 main compute die（由 Google 自行設計），與讓聯發科代為投片相較，成本可節省多少。<br />
+<br />
+2. Google 與聯發科的合作一開始（8t）就是採 semi-COT 模式。聯發科的 mark-up 主要來自自行設計部分，所以 Google 是否親自投片 main compute die，不是聯發科獲利成長趨勢的觀察重點。<br />
+<br />
+3. 但從 Google 連投片相關的 pass-through mark-up 都想看看能不能省，代表 Google 的成本控管態度，已從過去的好好先生，變成錙銖必較的精算者，原因在於要跟 Nvidia 直接競爭，所以具備成本優勢的 Google 當然會在意 EMIB-T 生產良率。順帶一提，台積電對 2026 年 5.5-reticle CoWoS 的生產良率目標，也是 98% 起跳。<br />
+<br />
+【台積電的立場】<br />
+<br />
+1. 我的理解是，台積電仍在評估 2H27 要分配多少先進製程產能給 Humufish，原因在於：(1) 仍想爭取後段封裝訂單（但目前看很難，這是 Google 有意為之的策略）、與 (2) 尚在評估後段 EMIB-T 實際產出，避免稀缺的先進製程資源被錯置。<br />
+<br />
+2. 影響 Humufish 後段有效產出的關鍵，包括 EMIB-T 與載板，要追蹤這件事必須兩個一起看。<br />
+<br />
+3. 在 Humufish semi-COT 方面，台積電也是傾向讓聯發科投片main compute die，除了兩家公司關係好外，關鍵是聯發科是台積電第三大先進製程客戶（2025年），若 TPU 訂單有變化，以聯發科的規模，較容易協助台積電做投片組合調整，扮演一個稱職的緩衝角色。</p>",https://nitter.net/mingchikuo/status/2050920697325609220#m,"Sun, 03 May 2026 12:49:33 GMT",2026-05-15 06:07:05
+2049046321634386286,"<p>Two recent signals that align with my view:<br />
+<br />
+OpenAI CEO Sam Altman <a href=""https://nitter.net/sama"" title=""Sam Altman"">@sama</a><br />
+<a href=""https://nitter.net/sama/status/2048428561481265539?s=61&amp;t=a-bloX1n-TZ50ofqhetO1A"">nitter.net/sama/status/2048428561…</a><br />
+""...to seriously rethink how operating systems and user interfaces are designed... there should be a protocol that is equally usable by people and agents."" <br />
+<br />
+GeekPark <a href=""https://nitter.net/GeekParkHQ"" title=""GeekPark 极客公园"">@GeekParkHQ</a> cited remarks from OpenAI’s Head of Hardware, Richard Ho, at a Stanford IEEE session:<br />
+<a href=""https://nitter.net/GeekParkHQ/status/2048976778417627635"">nitter.net/GeekParkHQ/status/2048…</a><br />
+""...it’s the first time infrastructure and consumer hardware are being tightly coupled. OpenAI is making the bet that if users' default interface shifts to agents, the current stack, device, silicon, OS, doesn’t really hold.""</p>
+<hr />
+<blockquote>
+<b>郭明錤｜Ming-Chi Kuo (@mingchikuo)</b>
+<p>
+<p><a href=""http://x.com/i/article/2048582516391751680"">x.com/i/article/204858251639…</a></p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/mingchikuo/status/2048587389791269182#m"">https://nitter.net/mingchikuo/status/2048587389791269182#m</a>
+</footer>
+</blockquote>",https://nitter.net/mingchikuo/status/2049046321634386286#m,"Tue, 28 Apr 2026 08:41:27 GMT",2026-05-15 06:07:05
+2049046303058108445,"<p>近期兩個與我分析方向一致的訊息：<br />
+<br />
+OpenAI CEO Sam Altman <a href=""https://nitter.net/sama"" title=""Sam Altman"">@sama</a><br />
+<a href=""https://nitter.net/sama/status/2048428561481265539?s=61&amp;t=a-bloX1n-TZ50ofqhetO1A"">nitter.net/sama/status/2048428561…</a><br />
+""...to seriously rethink how operating systems and user interfaces are designed... there should be a protocol that is equally usable by people and agents."" <br />
+<br />
+GeekPark 极客公园 <a href=""https://nitter.net/GeekParkHQ"" title=""GeekPark 极客公园"">@GeekParkHQ</a> 引用 OpenAI Head of Hardware Richard Ho 在 Stanford IEEE session 的發言<br />
+<a href=""https://nitter.net/GeekParkHQ/status/2048976778417627635"">nitter.net/GeekParkHQ/status/2048…</a><br />
+""...it’s the first time infrastructure and consumer hardware are being tightly coupled. OpenAI is making the bet that if users' default interface shifts to agents, the current stack, device, silicon, OS, doesn’t really hold.""</p>
+<hr />
+<blockquote>
+<b>郭明錤｜Ming-Chi Kuo (@mingchikuo)</b>
+<p>
+<p><a href=""http://x.com/i/article/2048582573291606016"">x.com/i/article/204858257329…</a></p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/mingchikuo/status/2048587369394381143#m"">https://nitter.net/mingchikuo/status/2048587369394381143#m</a>
+</footer>
+</blockquote>",https://nitter.net/mingchikuo/status/2049046303058108445#m,"Tue, 28 Apr 2026 08:41:22 GMT",2026-05-15 06:07:05
+2048587389791269182,"<p><a href=""http://x.com/i/article/2048582516391751680"">x.com/i/article/204858251639…</a></p>",https://nitter.net/mingchikuo/status/2048587389791269182#m,"Mon, 27 Apr 2026 02:17:49 GMT",2026-05-15 06:07:05
+2048587369394381143,"<p><a href=""http://x.com/i/article/2048582573291606016"">x.com/i/article/204858257329…</a></p>",https://nitter.net/mingchikuo/status/2048587369394381143#m,"Mon, 27 Apr 2026 02:17:44 GMT",2026-05-15 06:07:05
+2047361344073302148,"<p>From another angle, the key reason Terafab chose Intel is the lack of real alternatives. TSMC's capacity is effectively locked in for years by high-margin demand, while Samsung continues to ride the memory supercycle with outsized returns. With visibility for both companies out to around 2028–2030, neither has a reason to reallocate resources to a high-uncertainty bet like Terafab.<br />
+<br />
+<a href=""https://seekingalpha.com/article/4893107-tesla-inc-tsla-q1-2026-earnings-call-transcript"">seekingalpha.com/article/489…</a></p>
+<img src=""https://nitter.net/pic/media%2FHGmvoS_aAAAo-GQ.png"" />",https://nitter.net/mingchikuo/status/2047361344073302148#m,"Thu, 23 Apr 2026 17:05:57 GMT",2026-05-15 06:07:05
+2047361330529943980,"<p>從另一角度看，Terafab 找 Intel 的關鍵也是因為沒其他選擇。台積電未來數年產能已被高毛利訂單填滿，Samsung 則可持續享受記憶體超級週期的超額報酬，兩者的能見度都到 2028–2030 年，沒理由為了不確定性高的 Terafab 重置資源。<br />
+<br />
+<a href=""https://seekingalpha.com/article/4893107-tesla-inc-tsla-q1-2026-earnings-call-transcript"">seekingalpha.com/article/489…</a></p>
+<img src=""https://nitter.net/pic/media%2FHGmvbDRbgAA5DoA.png"" />",https://nitter.net/mingchikuo/status/2047361330529943980#m,"Thu, 23 Apr 2026 17:05:53 GMT",2026-05-15 06:07:05
+2046456380761203172,"<p><a href=""http://x.com/i/article/2046451386574053376"">x.com/i/article/204645138657…</a></p>",https://nitter.net/mingchikuo/status/2046456380761203172#m,"Tue, 21 Apr 2026 05:09:57 GMT",2026-05-15 06:07:05
+2046456354513236168,"<p><a href=""http://x.com/i/article/2046451042267942912"">x.com/i/article/204645104226…</a></p>",https://nitter.net/mingchikuo/status/2046456354513236168#m,"Tue, 21 Apr 2026 05:09:50 GMT",2026-05-15 06:07:05
+2043950457048183114,"<p>Qualcomm working with CXMT for custom memory has been making the rounds. Here's what's missing from the coverage:<br />
+<br />
+1. This refers to Qualcomm working with GigaDevice on a discrete smartphone NPU, targeting Chinese smartphone brands.<br />
+<br />
+2. Shipments are expected in late 2026 or early 2027, aimed at devices priced above RMB 4,000–4,500.<br />
+<br />
+3. The NPU delivers ~40 TOPS of compute and is paired with 4GB of customized 3D DRAM, manufactured by CXMT.<br />
+<br />
+4. It delivers higher memory bandwidth than LPDDR5X, with TSV and Hybrid Bonding stacking.<br />
+<br />
+5. Shipment outlook and design wins are now below initial 1H25 expectations, mainly due to: (1) rising memory prices driving up NPU costs; (2) on-device AI use cases and business models still lacking clarity to date.</p>",https://nitter.net/mingchikuo/status/2043950457048183114#m,"Tue, 14 Apr 2026 07:12:18 GMT",2026-05-15 06:07:05
+2043950445677424962,"<p>近期市場在傳 Qualcomm 跟長鑫存儲（CXMT）合作客製化記憶體消息，以下是沒提到的重點：<br />
+<br />
+1. 這是指 Qualcomm 與兆易創新合作，應用於手機獨立 NPU，目標客戶為中國手機品牌。<br />
+<br />
+2. 預計 2026 年底或 2027 年初大量出貨，定位人民幣 4,000–4,500 元以上機種。<br />
+<br />
+3. 該 NPU 擁有約 40 TOPS 算力，配備 4GB 客製化 3D DRAM，由長鑫負責製造。<br />
+<br />
+4. 採用 TSV 與 Hybrid bonding 堆疊技術，使其記憶體頻寬高於 LPDDR5X。<br />
+<br />
+5. 出貨展望與開案數量低於 1H25 開案時的預期，主因為：(1) 記憶體漲價推升NPU成本；(2) 裝置端 AI 應用與商業模式至今仍未明朗。</p>",https://nitter.net/mingchikuo/status/2043950445677424962#m,"Tue, 14 Apr 2026 07:12:15 GMT",2026-05-15 06:07:05
+2043237317654257754,"<p><a href=""http://x.com/i/article/2043231790031409153"">x.com/i/article/204323179003…</a></p>",https://nitter.net/mingchikuo/status/2043237317654257754#m,"Sun, 12 Apr 2026 07:58:32 GMT",2026-05-15 06:07:05
+2043237287644070186,"<p><a href=""http://x.com/i/article/2043231771656155136"">x.com/i/article/204323177165…</a></p>",https://nitter.net/mingchikuo/status/2043237287644070186#m,"Sun, 12 Apr 2026 07:58:25 GMT",2026-05-15 06:07:05
+2035376401835258209,"<p>Smuggling AI servers into China didn’t change the downward trend in Super Micro’s gross margin<br />
+<br />
+Excerpt:<br />
+""...servers sold for $510 million between late April 2025 and mid-May 2025...""<br />
+<br />
+Full article:<br />
+<a href=""https://www.cnbc.com/2026/03/19/us-tech-execs-smuggled-nvidia-chips-to-china-prosecutors-say.html"">cnbc.com/2026/03/19/us-tech-…</a><br />
+<br />
+At least ~10% of Super Micro’s 2Q CY2025 revenue was tied to servers reportedly smuggled into China. In theory, these should carry much higher margins, but gross margin still declined sharply to 9.6% (vs. 11.3% in 2Q CY2024).<br />
+<br />
+Two possibilities:<br />
+1. Margins in the legitimate business are simply too weak. This is consistent with my earlier view that AI server assembly margins are under pressure (<a href=""https://nitter.net/mingchikuo/status/2010723871272661166"">nitter.net/mingchikuo/status/2010…</a>). Super Micro’s structural disadvantages, including smaller scale and weaker execution, further amplify margin pressure.<br />
+2. Super Micro likely wasn’t the only one involved in smuggling. With alternatives available, buyer leverage increased, so margins on those sales were probably not as high as expected.</p>
+<img src=""https://nitter.net/pic/card_img%2F2052532510677188608%2FyAafHpJj%3Fformat%3Djpg%26name%3D800x419"" />",https://nitter.net/mingchikuo/status/2035376401835258209#m,"Sat, 21 Mar 2026 15:22:04 GMT",2026-05-15 06:07:05
+2035376388136382518,"<p>走私AI伺服器到中國，無法改變美超微的毛利率衰退趨勢<br />
+<br />
+節錄自新聞報導：<br />
+""...servers sold for $510 million between late April 2025 and mid-May 2025...""<br />
+<br />
+報導原文：<br />
+<a href=""https://www.cnbc.com/2026/03/19/us-tech-execs-smuggled-nvidia-chips-to-china-prosecutors-say.html"">cnbc.com/2026/03/19/us-tech-…</a><br />
+<br />
+美超微在2Q CY2025的營收至少約1/10的營收來自走私。理論上走私的毛利率應該很高，但2Q CY2025的毛利率卻顯著衰退至9.6% (vs. 2Q CY2024的11.3%)。<br />
+<br />
+兩種可能：<br />
+1. 合法銷售業務的毛利率太差，這回應了我之前關於AI伺服器組裝毛利率承壓的分析 (<a href=""https://nitter.net/mingchikuo/status/2010723857813168544"">nitter.net/mingchikuo/status/2010…</a>)。而美超微較小規模、較差執行力等結構性劣勢，進一步放大毛利率壓力。<br />
+2. 當時可能不只美超微走私，有其他選擇下有助買家提高議價力，故美超微的非法銷售毛利率沒想像中高。</p>
+<img src=""https://nitter.net/pic/card_img%2F2052532510677188608%2FyAafHpJj%3Fformat%3Djpg%26name%3D800x419"" />",https://nitter.net/mingchikuo/status/2035376388136382518#m,"Sat, 21 Mar 2026 15:22:01 GMT",2026-05-15 06:07:05

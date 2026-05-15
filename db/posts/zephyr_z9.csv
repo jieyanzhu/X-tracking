@@ -1,0 +1,492 @@
+id,content,url,published_at,fetched_at
+2055155746313253197,"<p>Good read<br />
+But I don't think we will ever see Mythos or models bigger than that (50T+) on heterogeneous inference hardware<br />
+This stack is optimized for sub-5T (tbh even less than 3T) size models<br />
+Also, remember that labs are pushing higher token efficiency, so that they don't need to push TPS super hard and can serve at super high batch sizes<br />
+<br />
+But things will change with Feynman and 3D stacking when they can put the memory die on top of the logic die</p>
+<img src=""https://nitter.net/pic/media%2FHIVfMP3bsAAFKrd.png"" />
+
+<hr />
+<blockquote>
+<b>fin (@fi56622380)</b>
+<p>
+<p>每年的Nvidia GTC大会，都会带来一些技术范式转新移概念，作为全业界的新技术标杆<br />
+各家在GTC之后都会改roadmap去抄作业<br />
+<br />
+总有人问，AI芯片下一波结构性趋势转变的机会在哪里？<br />
+<br />
+这几个月范式转移带来的结构性转变机会之一，就是AI异构推理，而以Cerebras为首的SRAM路线初创，就这样走到了新趋势前沿<br />
+<br />
+------------------------<br />
+<br />
+SRAM路线的公司生态位在哪里，得先看genAI推理的不同阶段workload特点<br />
+<br />
+主要分成三个部分：<br />
+<br />
+prefill：计算强度特别高，对memory带宽速度要求不高，对memory size要求中等偏高<br />
+<br />
+decode阶段的attention部分：计算强度中等，对memory带宽速度要求特别高（对kv cache的反复读写），对memory size要求特别高，因为batch size的变大造成了kv cache的线性增长<br />
+<br />
+decode阶段的FFN部分：计算强度中等，对memory带宽速度要求特别高（模型权重的反复读取），对memory size要求中等偏高（模型权重）<br />
+<br />
+SRAM路线的芯片特点也很清楚：<br />
+除了memory带宽做到了极致，其他方面都是严重缺陷，本质上是用计算强度和memory size做不大这两个劣势，换取了极致的memory带宽速度<br />
+<br />
+---------------------<br />
+再来分别看AI推理的三个阶段，SRAM的适用度<br />
+<br />
+prefill：SRAM计算强度无法做的很高，因为整个芯片上的SRAM面积占用太大，计算模块面积受限，所以prefill是弱项<br />
+<br />
+decode阶段的attention部分：SRAM memory带宽要求高能达到，但是SRAM memory size很小达不到batch的要求，所以SRAM做attention只能满足一半需求<br />
+<br />
+decode阶段的FFN部分：SRAM memory带宽要求高能达到，memory size要求中等，SRAM芯片通过互联通信的优化，能勉强解决memory size的问题，虽然代价很高，但ROI在某些场景下还是能算的过来的<br />
+<br />
+----------<br />
+所以SRAM路线的加速器 在AI异构推理的适用范围也很清楚：<br />
+<br />
+prefill部分别想了，性能垃圾，经济性垃圾<br />
+<br />
+decode阶段的FFN部分，属于努努力加大成本还能够得着<br />
+<br />
+decode阶段attention部分，kv cache对memory size要求太高，批量处理需求实现过于高昂，让Cerebras昂贵的230万美元一片，45片连成一起的奢侈的一亿美元的系统做成专属的超级VIP服务，完全是经济性灾难<br />
+<br />
+想象一下，一两个用户agent flow做coding任务花了1~2M context length，就得耗费230万美元一整个cerebras的44GB SRAM来做KV cache，不然速度就上不去，这是什么样的奢侈服务<br />
+<br />
+-------------<br />
+<br />
+所以结论简直不能再明显了：Cerebras如果单独做全栈AI推理（prefill + decode ATTN + decode FFN），经济上是走不通的，没有未来的<br />
+<br />
+因为Cerebras成本是非常惊人的，即便是他们毛利率压的如此之低，每台 CS-3 系统的隐含租金还是要 $41.96/小时，是B200的差不多十倍租金，更不要说CS-3还得很多片连起来做LLM推理，租金要再乘以很多倍。<br />
+<br />
+这也是为什么SRAM路线经济效益如此差的原因，Nvidia在GTC已经清晰的指出了这一点（如图）。<br />
+<br />
+鼓吹SRAM路线以后取代HBM？那是痴人说梦，SRAM的scaling已经撞墙的情况下，每代芯片上的SRAM密度已经很难提升，在memory size这个维度上，HBM的指数型增长只会更加和SRAM拉开差距。即便是memory 带宽这个维度上，HBM也在指数型增长，缩小和SRAM的差距<br />
+<br />
+所以Nvidia的解法非常简洁而优雅：decode阶段的FFN部分交给SRAM路线，其他部分交给传统HBM GPU，把整个pareto frontier往右上角推进了很多<br />
+<br />
+Rubin + LPX最高速度突破1000 token/s的同时，还能让整体throuhput仍然能保持一定的商业价值（这点很重要）。要知道如果在Blackwell要跑到400~500 token/s高速，只能同时处理很少的几个请求，这对GPU资源是巨大的浪费。<br />
+<br />
+而现在就算是跑到1000 token/s，也能保持一定的batch size(吞吐量)了，终于也能产生商业价值了，图里说在400 token/s的速度下，Rubin + LPX把吞吐提升了35倍，就是典型的token经济学，这个token高速度下，从Blackwell算提升了35倍的商业价值<br />
+<br />
+---------------------<br />
+<br />
+这个解法在GTC公布标准答案之后，甚至更早在收购Groq的LPU之后，大家就已经开始做异构推理这个方向抄作业的努力了<br />
+<br />
+Google的TPU找了Marvell做SRAM部分<br />
+<br />
+Amazon AWS的trainium找了Cerebras做SRAM部分<br />
+<br />
+字节的AI asic找了高通做SRAM部分<br />
+<br />
+未来我们一定会看到越来越多类似的消息<br />
+<br />
+而这就是Cerebras在经济上可持续的最好道路：不要硬扛全栈AI推理，只做自己擅长的部分，在AI推理中和主流AI ASIC合作，争取能把自己SRAM芯片融入其他家的AI推理的decode FFN环节<br />
+<br />
+这也是为什么，Cerebras长期发展的关键在于和aws trainium的disaggregate inference能整合到什么程度<br />
+<br />
+如果只是目前爆出的Trainium做prefill和Cerebras做decode分离，技术上实现难度要小的多，但是这样经济上仍然不划算 ，只能是战略布局，能有一定的市场，但无法真正产生规模化竞争力<br />
+<br />
+而走Nvidia路线，深度整合两家优势，需要不少时间的技术整合，难度不小，但回报是值得的。解法一：trainium做prefill和decode attn，Cerebras做decode FFN。或者解法二：Cerebras做草稿模型，trainium做验证,。无论是哪种解法，市场竞争力都大太多了<br />
+<br />
+--------------------<br />
+<br />
+和主流AI ASIC这样的合作方式，是减小了SRAM路线的市场规模TAM吗？<br />
+<br />
+不，这才是SRAM路线的公司唯一的长期可持续化增大市场规模的道路，因为AI异构推理趋势一定是未来，提前在这个增长的未来蓝图中找到属于自己的拼图位置，才能跟着市场一起增长<br />
+<br />
+SRAM路线公司一旦融入任何主流AI ASIC的异构推理环节，身价都会暴涨，因为出货量的TAM完全不是一个数量级了<br />
+<br />
+不然的话，AI异构推理在token速度（不是throughput）这个维度上，一定会持续的蚕食SRAM路线的速度优势，SRAM路线AI全栈推理沦为昂贵的玩具是注定的结局</p>
+<img src=""https://nitter.net/pic/media%2FHIVSW43aUAA8ErV.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/fi56622380/status/2055148861015089470#m"">https://nitter.net/fi56622380/status/2055148861015089470#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055155746313253197#m,"Fri, 15 May 2026 05:18:07 GMT",2026-05-15 06:09:48
+2055146195119698195,"<p>Infineon's SiC part is really good for high power SSTs</p>
+<hr />
+<blockquote>
+<b>Irrational Analysis (@insane_analyst)</b>
+<p>
+<p>Time to take edible, it is.<br />
+Bored, I am.<br />
+<br />
+I think there are 7+ more companies left. Sigh.</p>
+<img src=""https://nitter.net/pic/media%2FHIVUv6HakAEfi1i.png"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/insane_analyst/status/2055142585505845519#m"">https://nitter.net/insane_analyst/status/2055142585505845519#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055146195119698195#m,"Fri, 15 May 2026 04:40:10 GMT",2026-05-15 06:09:48
+2055118903031013569,"<p>Japanese industrial automation &amp; humanoid supply chain players have done really well over the last 45 days<br />
+Harmonic Drive, DMG Mori, Tsugami, Nabtesco, Yaskawa, FANUC<br />
+everything up 60%-100%</p>
+<hr />
+<blockquote>
+<b>Serenity (@aleabitoreddit)</b>
+<p>
+<p>I do like Harmonic Drive (6324) as the Western Leader (eg. harmonic reduction gear) at ~$4.2B MC.<br />
+<br />
+Very large part of robotics/humanoid BOM value.<br />
+<br />
+I actually like Leader Drive more (since it's cheaper for mass production, covers more parts). And maybe Sanhua for <a href=""https://nitter.net/search?f=tweets&amp;q=%23TSLA"">$TSLA</a> Optimus. <br />
+<br />
+But prefer to advance Western supply chains with my capital over ones in China. <br />
+<br />
+It's not just profiting off markets, but what you want to get accomplished as well (helping advance US supply chains and Robotics leaders).</p>
+<img src=""https://nitter.net/pic/media%2FHIU9RWJakAA3LUc.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/aleabitoreddit/status/2055116243582247014#m"">https://nitter.net/aleabitoreddit/status/2055116243582247014#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055118903031013569#m,"Fri, 15 May 2026 02:51:43 GMT",2026-05-15 06:09:48
+2055116190184534211,"<p>""Shifting from eFlash to RRAM (ReRAM) and MRAM for advanced nodes (≤28nm) in Auto, AI Glasses, and Edge AI.""<br />
+<br />
+So this is why the shitco Everspin is rising</p>
+<hr />
+<blockquote>
+<b>Dan Nystedt (@dnystedt)</b>
+<p>
+<p>TSMC 2026 Technology Symposium (Taiwan 5/14) Summary:<br />
+Global Expansion & Operations<br />
+· Global Build-out: Constructing or modifying 18 fabs worldwide (includes 5 advanced packaging plants).<br />
+· Taiwan Core: 12 of these 18 facilities are located in Taiwan.<br />
+· Acceleration: Expansion speed has doubled to 9 new plants per year (2025–2026) vs. 4 per year (2017–2024).<br />
+International Site Progress<br />
+· Arizona (USA): <br />
+-Fab 1 output to grow 1.8x in 2026. <br />
+-Fab 2 equipment move-in 2H-2026 (N3 production 2H-2027). <br />
+-Fab 3 broke ground 1H-2025. <br />
+-Fab 4 and first advanced packaging plant (AP1) are in initial construction.<br />
+· Kumamoto (Japan): <br />
+-Fab 1 (28/22nm) yield already equals Taiwan levels; 2026 output target is 2.3x YoY. <br />
+-Fab 2 began construction in 2025 for N3 production.<br />
+· Dresden (Germany): <br />
+-ESMC facility focusing on 12nm–28nm for Automotive/Industrial.<br />
+Advanced Process Roadmap (N2 / A14 / A12)<br />
+· N2 Momentum: Fab 20 (Hsinchu) and Fab 22 (Kaohsiung) are in mass production. Taichung Fab 25 to follow in 2028.<br />
+· N2 Performance: First-year output expected to be 45% higher than N3's first year. Capacity expansion CAGR of 70% seen 2026–2028.<br />
+· Yield Maturity: N2 yield learning curve is 2 quarters ahead of N3 at the same stage, driven by AI-optimized manufacturing.<br />
+· A14 (1.4nm): Already achieved &gt;80% yield on 256Mb SRAM; offers 10–15% speed boost or 25–30% power reduction vs. N2.<br />
+· New Nodes: <br />
+-A12 (Performance-focused with Backside Power/Super Power Rail) and A13 both targeting 2029 production. <br />
+-N2U(enhanced 2nm) slated for 2028.<br />
+· Next-Gen: CFET architecture reduces SRAM cell area by 30%vs. Nanosheet.<br />
+Advanced Packaging & Silicon Photonics<br />
+· CoWoS Scale: 5.5x reticle size now at 98% yield. Scaling to 14x reticle for 20 HBMs by 2028 and 24 HBMs by 2029.<br />
+· System on Wafer (SoW): Future ""Super Exchange"" chips to integrate 64 HBMs/16 CoWoS units, exceeding 40x reticle size with 100TB+ bandwidth.<br />
+· Growth: 3DIC/CoWoS capacity CAGR of &gt;80% 2022–2027.<br />
+· COUPE: All-optical interconnects to replace copper as data centers scale to millions of GPUs and power needs surge 200x.<br />
+Specialty & Memory Shift<br />
+· The Memory Divorce: Shifting from eFlash to RRAM (ReRAM) and MRAM for advanced nodes (≤28nm) in Auto, AI Glasses, and Edge AI.<br />
+· Edge AI Specs: <br />
+-N4PRF (RF process) for 39% power reduction <br />
+-N16HV(16nm High Voltage) specifically for AI Smart Glasses/AR displays.<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23TSM"">$TSM</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23NVDA"">$NVDA</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AAPL"">$AAPL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AMD"">$AMD</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AVGO"">$AVGO</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MRVL"">$MRVL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23INTC"">$INTC</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AMZN"">$AMZN</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23GOOGL"">$GOOGL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MSFT"">$MSFT</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23META"">$META</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23semiconductors"">#semiconductors</a> <br />
+<br />
+Links:<br />
+<a href=""https://news.cnyes.com/news/id/6458515"">news.cnyes.com/news/id/64585…</a><br />
+<br />
+<a href=""https://www.cna.com.tw/news/afe/202605140194.aspx"">cna.com.tw/news/afe/20260514…</a><br />
+<br />
+<a href=""https://www.ctee.com.tw/news/20260514701533-430501"">ctee.com.tw/news/20260514701…</a><br />
+<br />
+<a href=""https://money.udn.com/money/story/5607/9502282"">money.udn.com/money/story/56…</a></p>
+<img src=""https://nitter.net/pic/card_img%2F2054864015281750016%2F_rHaNp-A%3Fformat%3Djpg%26name%3D386x202"" />
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/dnystedt/status/2054866375781539917#m"">https://nitter.net/dnystedt/status/2054866375781539917#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055116190184534211#m,"Fri, 15 May 2026 02:40:56 GMT",2026-05-15 06:09:48
+2055115734104310093,"<p>Read this</p>
+<hr />
+<blockquote>
+<b>Dan Nystedt (@dnystedt)</b>
+<p>
+<p>TSMC 2026 Technology Symposium (Taiwan 5/14) Summary:<br />
+Global Expansion & Operations<br />
+· Global Build-out: Constructing or modifying 18 fabs worldwide (includes 5 advanced packaging plants).<br />
+· Taiwan Core: 12 of these 18 facilities are located in Taiwan.<br />
+· Acceleration: Expansion speed has doubled to 9 new plants per year (2025–2026) vs. 4 per year (2017–2024).<br />
+International Site Progress<br />
+· Arizona (USA): <br />
+-Fab 1 output to grow 1.8x in 2026. <br />
+-Fab 2 equipment move-in 2H-2026 (N3 production 2H-2027). <br />
+-Fab 3 broke ground 1H-2025. <br />
+-Fab 4 and first advanced packaging plant (AP1) are in initial construction.<br />
+· Kumamoto (Japan): <br />
+-Fab 1 (28/22nm) yield already equals Taiwan levels; 2026 output target is 2.3x YoY. <br />
+-Fab 2 began construction in 2025 for N3 production.<br />
+· Dresden (Germany): <br />
+-ESMC facility focusing on 12nm–28nm for Automotive/Industrial.<br />
+Advanced Process Roadmap (N2 / A14 / A12)<br />
+· N2 Momentum: Fab 20 (Hsinchu) and Fab 22 (Kaohsiung) are in mass production. Taichung Fab 25 to follow in 2028.<br />
+· N2 Performance: First-year output expected to be 45% higher than N3's first year. Capacity expansion CAGR of 70% seen 2026–2028.<br />
+· Yield Maturity: N2 yield learning curve is 2 quarters ahead of N3 at the same stage, driven by AI-optimized manufacturing.<br />
+· A14 (1.4nm): Already achieved &gt;80% yield on 256Mb SRAM; offers 10–15% speed boost or 25–30% power reduction vs. N2.<br />
+· New Nodes: <br />
+-A12 (Performance-focused with Backside Power/Super Power Rail) and A13 both targeting 2029 production. <br />
+-N2U(enhanced 2nm) slated for 2028.<br />
+· Next-Gen: CFET architecture reduces SRAM cell area by 30%vs. Nanosheet.<br />
+Advanced Packaging & Silicon Photonics<br />
+· CoWoS Scale: 5.5x reticle size now at 98% yield. Scaling to 14x reticle for 20 HBMs by 2028 and 24 HBMs by 2029.<br />
+· System on Wafer (SoW): Future ""Super Exchange"" chips to integrate 64 HBMs/16 CoWoS units, exceeding 40x reticle size with 100TB+ bandwidth.<br />
+· Growth: 3DIC/CoWoS capacity CAGR of &gt;80% 2022–2027.<br />
+· COUPE: All-optical interconnects to replace copper as data centers scale to millions of GPUs and power needs surge 200x.<br />
+Specialty & Memory Shift<br />
+· The Memory Divorce: Shifting from eFlash to RRAM (ReRAM) and MRAM for advanced nodes (≤28nm) in Auto, AI Glasses, and Edge AI.<br />
+· Edge AI Specs: <br />
+-N4PRF (RF process) for 39% power reduction <br />
+-N16HV(16nm High Voltage) specifically for AI Smart Glasses/AR displays.<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23TSM"">$TSM</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23NVDA"">$NVDA</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AAPL"">$AAPL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AMD"">$AMD</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AVGO"">$AVGO</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MRVL"">$MRVL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23INTC"">$INTC</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23AMZN"">$AMZN</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23GOOGL"">$GOOGL</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MSFT"">$MSFT</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23META"">$META</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23semiconductors"">#semiconductors</a> <br />
+<br />
+Links:<br />
+<a href=""https://news.cnyes.com/news/id/6458515"">news.cnyes.com/news/id/64585…</a><br />
+<br />
+<a href=""https://www.cna.com.tw/news/afe/202605140194.aspx"">cna.com.tw/news/afe/20260514…</a><br />
+<br />
+<a href=""https://www.ctee.com.tw/news/20260514701533-430501"">ctee.com.tw/news/20260514701…</a><br />
+<br />
+<a href=""https://money.udn.com/money/story/5607/9502282"">money.udn.com/money/story/56…</a></p>
+<img src=""https://nitter.net/pic/card_img%2F2054864015281750016%2F_rHaNp-A%3Fformat%3Djpg%26name%3D386x202"" />
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/dnystedt/status/2054866375781539917#m"">https://nitter.net/dnystedt/status/2054866375781539917#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055115734104310093#m,"Fri, 15 May 2026 02:39:07 GMT",2026-05-15 06:09:48
+2055079495774949439,"<p>Interesting.<br />
+<br />
+According to FundaAI, Qualcomm is expected to begin shipping an LPU-like AI ASIC to a Chinese CSP by the end of 2026.<br />
+<br />
+Estimated shipment volume is around 1 million units, with an ASP of roughly $4,000.<br />
+<br />
+For general-purpose server CPUs, shipments are expected to begin in the second half of 2027, or toward the end of 2027.<br />
+<br />
+3 million units… that’s a lot.<br />
+<br />
+Qualcomm is also reportedly working with two U.S. CSPs.<br />
+<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23QCOM"">$QCOM</a></p>
+<img src=""https://nitter.net/pic/media%2FHIUb5lQasAAEjn5.jpg"" />",https://nitter.net/jukan05/status/2055079495774949439#m,"Fri, 15 May 2026 00:15:07 GMT",2026-05-15 06:09:48
+2055050131498557889,"<p>Think we are watching the birth of a new market and this is what cybersecurity is gonna look like if vibe coding is the defense perimeter</p>
+<hr />
+<blockquote>
+<b>Feross (@feross)</b>
+<p>
+<p>Another day, another MASSIVE npm supply chain attack.<br />
+<br />
+If you haven't installed <a href=""https://nitter.net/SocketSecurity"" title=""Socket"">@SocketSecurity</a> yet (it's free!), you should have done this yesterday. The second best time to install it is today!</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/feross/status/2055007340576084009#m"">https://nitter.net/feross/status/2055007340576084009#m</a>
+</footer>
+</blockquote>",https://nitter.net/fabknowledge/status/2055050131498557889#m,"Thu, 14 May 2026 22:18:26 GMT",2026-05-15 06:09:48
+2055017829699899615,"<p>LFG!!!</p>
+<hr />
+<blockquote>
+<b>Wall St Engine (@wallstengine)</b>
+<p>
+<p><a href=""https://nitter.net/search?f=tweets&amp;q=%23AMAT"">$AMAT</a> Q2'26 EARNINGS HIGHLIGHTS<br />
+<br />
+🔹 Revenue: $7.91B (Est $7.68B) 🟢; +11% YoY<br />
+🔹 Adj. EPS: $2.86 (Est $2.68) 🟢; +20% YoY<br />
+🔹 Non-GAAP Gross Margin: 50.0%<br />
+🔹 Non-GAAP Operating Margin: 32.1%<br />
+🔹 Semiconductor Systems Revenue: $5.97B<br />
+<br />
+Q3 FY26 Guide:<br />
+🔹 Revenue: $8.45B-$9.45B (Est $8.15B) 🟢<br />
+🔹 Adj. EPS: $3.16-$3.56 (Est $2.90) 🟢<br />
+<br />
+Segment Performance:<br />
+🔹 Semiconductor Systems Revenue: $5.97B<br />
+🔹 Semiconductor Systems Non-GAAP Operating Margin: 35.2%<br />
+🔹 Applied Global Services Revenue: $1.67B<br />
+🔹 Applied Global Services Non-GAAP Operating Margin: 29.2%<br />
+<br />
+Other Metrics:<br />
+🔹 Cash From Operations: $845M<br />
+🔹 Non-GAAP Free Cash Flow: $210M<br />
+🔹 Semiconductor Equipment Business: Expected to grow more than 30% in calendar 2026<br />
+🔹 NEXX Business: Agreement to acquire ASMPT’s advanced packaging deposition business<br />
+<br />
+Capital Return:<br />
+🔹 Shareholder Returns: $765M<br />
+🔹 Share Repurchases: $400M<br />
+🔹 Dividends: $365M<br />
+🔹 Dividend Increased: +15% to $0.53/share<br />
+<br />
+Commentary:<br />
+🔸 “Applied Materials delivered record quarterly performance, and we now expect our semiconductor equipment business to grow more than 30 percent in calendar 2026.”<br />
+<br />
+🔸 “The rapid global build-out of AI computing infrastructure combined with Applied’s strong leadership positions in leading-edge logic, DRAM and advanced packaging provide an exceptionally strong foundation for sustained, multi-year revenue and profit growth.”</p>
+<img src=""https://nitter.net/pic/media%2FHITi17uaAAAoBq2.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/wallstengine/status/2055016758961111427#m"">https://nitter.net/wallstengine/status/2055016758961111427#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055017829699899615#m,"Thu, 14 May 2026 20:10:05 GMT",2026-05-15 06:09:48
+2055005538069729451,"<p>LMAO<br />
+Microsoft is pushing Github Copilot internally</p>
+<img src=""https://nitter.net/pic/media%2FHITYmSEbYAAjgLX.jpg"" />",https://nitter.net/zephyr_z9/status/2055005538069729451#m,"Thu, 14 May 2026 19:21:15 GMT",2026-05-15 06:09:48
+2055003225418608717,"<p>Now emulate Switch 2</p>
+<hr />
+<blockquote>
+<b>Mechanize (@MechanizeWork)</b>
+<p>
+<p>We gave frontier AI coding agents 24 hours to write a complete Game Boy Advance emulator from scratch.<br />
+<br />
+GPT-5.5's emulator runs games best, with Claude Sonnet 4.6 and Opus 4.7 close behind. Gemini 3.1 Pro failed to produce a working emulator.</p>
+<a href=""https://nitter.net/MechanizeWork/status/2054979238605054036#m"">
+<br />Video<br />
+  <img src=""https://nitter.net/pic/amplify_video_thumb%2F2054971277522456576%2Fimg%2FfTO5kihY0SrZSdCL.jpg"" />
+</a>
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/MechanizeWork/status/2054979238605054036#m"">https://nitter.net/MechanizeWork/status/2054979238605054036#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2055003225418608717#m,"Thu, 14 May 2026 19:12:03 GMT",2026-05-15 06:09:48
+2054987772289810884,"<p><a href=""http://x.com/i/article/2054980064337711104"">x.com/i/article/205498006433…</a></p>",https://nitter.net/mingchikuo/status/2054987772289810884#m,"Thu, 14 May 2026 18:10:39 GMT",2026-05-15 06:09:48
+2054974357890609435,"<p>I expected $220+<br />
+Cerebras is trading like the HK IPOs (100%+ on the first day)</p>",https://nitter.net/zephyr_z9/status/2054974357890609435#m,"Thu, 14 May 2026 17:17:21 GMT",2026-05-15 06:09:48
+2054967626254660023,"<p>UMC moves from 22nm planar to 14nm FinFET for their display driver IC foundry offering. TSMC and others are still using 28nm or older, I believe.</p>
+<img src=""https://nitter.net/pic/media%2FHIS2B5lWEAAKwOd.jpg"" />",https://nitter.net/lithos_graphein/status/2054967626254660023#m,"Thu, 14 May 2026 16:50:36 GMT",2026-05-15 06:09:48
+2054949027138208129,"<p>Will be higher<br />
+Chinese A shares are as degenerate as US<br />
+$300B mcap is easily possible</p>
+<hr />
+<blockquote>
+<b>Herman Jin (@ShanghaoJin)</b>
+<p>
+<p>1.5万亿+</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/ShanghaoJin/status/2054946371770396842#m"">https://nitter.net/ShanghaoJin/status/2054946371770396842#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054949027138208129#m,"Thu, 14 May 2026 15:36:41 GMT",2026-05-15 06:09:48
+2054948355009380669,"<p>HOLY SHEEET</p>
+<hr />
+<blockquote>
+<b>Jukan (@jukan05)</b>
+<p>
+<p>OFFICIAL H100 SALES UNDERWAY IN CHINA</p>
+<img src=""https://nitter.net/pic/media%2FHISjifnaUAAqbwa.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/jukan05/status/2054947159104249988#m"">https://nitter.net/jukan05/status/2054947159104249988#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054948355009380669#m,"Thu, 14 May 2026 15:34:01 GMT",2026-05-15 06:09:48
+2054947459533820096,"<p>Btw, the first qualified partner for Nvidia and most ODMs/OEMs for SSTs is Delta electronics<br />
+<br />
+Play wisely</p>
+<hr />
+<blockquote>
+<b>Irrational Analysis (@insane_analyst)</b>
+<p>
+<p>15+ people have pinged me in <a href=""https://nitter.net/search?f=tweets&amp;q=%23ENPH"">$ENPH</a> and <a href=""https://nitter.net/search?f=tweets&amp;q=%23SEDG"">$SEDG</a> and... I hate to admit it but its not completely stupid. Dead home solar stocks pivoting to solid state transformers... is credible. Very degen play to be clear. Each is only 1% of trading account.</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/insane_analyst/status/2054946933874298913#m"">https://nitter.net/insane_analyst/status/2054946933874298913#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054947459533820096#m,"Thu, 14 May 2026 15:30:28 GMT",2026-05-15 06:09:48
+2054942077021299040,"<p>Well, well, well...<br />
+Good for hardening the system</p>
+<hr />
+<blockquote>
+<b>Wall St Engine (@wallstengine)</b>
+<p>
+<p>ANTHROPIC’S MYTHOS HELPED RESEARCHERS FIND MACOS BUGS<br />
+<br />
+WSJ reports Calif researchers used techniques from Anthropic’s Mythos AI testing to find two macOS bugs.<br />
+<br />
+The bugs were linked into a privilege escalation exploit.<br />
+<br />
+Apple is reviewing a 55-page report and details are expected after patches.<br />
+<br />
+Calif says Claude helped build the exploit code in five days, but human researchers were still needed to make the chain work.<br />
+<br />
+Mozilla’s recent Mythos results were also notable:<br />
+<br />
+271 Firefox bugs identified for Firefox 150<br />
+<br />
+180 rated high severity<br />
+<br />
+80 moderate<br />
+<br />
+11 low<br />
+<br />
+423 total Firefox security bugs fixed in April</p>
+<img src=""https://nitter.net/pic/media%2FHISd1CFbwAAOptK.png"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/wallstengine/status/2054940877244792882#m"">https://nitter.net/wallstengine/status/2054940877244792882#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054942077021299040#m,"Thu, 14 May 2026 15:09:04 GMT",2026-05-15 06:09:48
+2054940211130618105,"<p>LOL<br />
+So A100, 5090 and RTX 6000 Pro is now allowed</p>
+<hr />
+<blockquote>
+<b>每日快讯 (@dmjk001)</b>
+<p>
+<p>超重磅！RTX 5090、Pro 6000 等国内疑似解禁！<br />
+<br />
+京东现已悄然上线名为“AI硬件京东自营专区”的全新店铺，多款此前因禁令处于“禁区”的顶级算力硬件正式开启自营销售。<br />
+根据店铺页面，本次上架了 RTX 5090 32G 涡轮版。值得关注的是，该卡为无任何阉割后缀的全球统一版本，专门针对多卡高密度部署而生。此前，该型号因高性能算力一度受限于美国的出口管制政策。<br />
+除了消费级旗舰，京东还首次在公开自营渠道上架了针对专业渲染和数据中心的 RTX PRO 6000 Blackwell 服务器版。该卡基于英伟达革命性的 Blackwell 架构，此前在华几乎无公开售卖渠道。此外，页面顶部还展示了专业绘图显卡 RTX PRO 6000 96G 以及此前备受关注的 Tesla A100 80G 等顶级 AI 训练卡。<br />
+“京东自营”不仅是一个标签，它在某种程度上代表了官方背书、合规性确认以及供应链稳定性。英伟达如果允许京东自营大规模上架某款型号，意味着品牌方已经获得了相关的贸易许可，并正式开启了面向中国市场的官方供应链路。<br />
+<br />
+这很可能标志着消费级的顶级显卡终于摆脱了灰色地带，回到了“阳光下”，结合今日特朗普率领高管访华的背景，这极有可能是中美贸易谈判中关于高科技产品准入的一个具体落地成果。</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/dmjk001/status/2054937257044594729#m"">https://nitter.net/dmjk001/status/2054937257044594729#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054940211130618105#m,"Thu, 14 May 2026 15:01:39 GMT",2026-05-15 06:09:48
+2054923607231623241,"<p>U can play the sub component suppliers as well if u want to<br />
+Localization is low in that area for now</p>
+<hr />
+<blockquote>
+<b>JabroniCoin.USD (@TheBenSchmark)</b>
+<p>
+<p>Yes.<br />
+<br />
+And <a href=""https://nitter.net/search?f=tweets&amp;q=%23ACMR"">$ACMR</a> is the key (only?) US-listed beneficiary, as YMTC &amp; CXMT are large customers</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/TheBenSchmark/status/2054902174690185501#m"">https://nitter.net/TheBenSchmark/status/2054902174690185501#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054923607231623241#m,"Thu, 14 May 2026 13:55:41 GMT",2026-05-15 06:09:48
+2054845090217226337,"<p>So they are basically matching the ""supposed"" production target of 950PR for 2026<br />
+750k H200s &amp; 750k 950PR</p>
+<hr />
+<blockquote>
+<b>Teortaxes▶️ (DeepSeek 推特🐋铁粉 2023 – ∞) (@teortaxesTex)</b>
+<p>
+<p>≤75K H200s is nothing for the likes of Alibaba, and anyway this is old news (2025 news). I'll be surprised to see deliveries before Q4 2026, when it is even less relevant</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/teortaxesTex/status/2054819794059252114#m"">https://nitter.net/teortaxesTex/status/2054819794059252114#m</a>
+</footer>
+</blockquote>",https://nitter.net/zephyr_z9/status/2054845090217226337#m,"Thu, 14 May 2026 08:43:41 GMT",2026-05-15 06:09:48
