@@ -1,0 +1,347 @@
+id,content,url,published_at,fetched_at
+2055831835381297247,"<p>人类很难能获得远视来看清当下。<br />
+<br />
+近三年的英伟达单卡显存容量实现了接近 3.6 倍的增幅。<br />
+而未来三年HBM端的需求会暴增5倍。<br />
+<br />
+现在绝大多数人对存储股的恐惧是涨太多和能否真正跨越周期，这里可以直接跟英伟达绑定，如果存储股不能跨过周期，那么说明英伟达销量没有持续爆涨AI需求被证伪。<br />
+很显然，英伟达的增长依然强劲，AI的需求从全球token用量的增幅可以直观看到。<br />
+黄仁勋说未来AI对算力的需求是千倍，同理对存储也一样是这个倍数。<br />
+<br />
+你相信AI革命是真的会发生，因为AI的消费品是算力，存储，光互连，那么可以变相理解为存储会转变成长股，同理AI革命确实在发生。<br />
+<br />
+那么就可以简单理解如果你能接受英伟达因为Ai革命的而持续增长，因为英伟达的估值是成长股估值，实际上就承认了存储股已经转变成长股pe应当享受成长股估值，俩者本质上不可能单独发生，只是绝大部分人不愿意相信。<br />
+<br />
+一、 英伟达侧的需求杠杆与虹吸效应<br />
+英伟达对 DRAM（尤其是 HBM）的绝对需求量正在经历代际间的级数放大，这构成了对全球存储产能的强制重组。<br />
+1. 代际规格的容量/频宽消耗弹性<br />
+<br />
+Blackwell Ultra 时代（2026年上半年）：单卡对 HBM3e 的消耗量直接推升至 288GB。<br />
+<br />
+Vera Rubin 时代（2026年底 - 2027年）：全面切入 HBM4 标准，单卡起步容量维持在 288GB，但后续 Ultra 版本预计将上探至 384GB 或 512GB。<br />
+<br />
+系统 DRAM 的二次放大：与 Rubin 架构配套的 Vera CPU 将单插槽的 LPDDR5X 主存支持容量从 Grace 的 480GB 垂直拔高至 1.5TB。这意味着单台高级 AI 机柜对普通大容量 DRAM 的抽血效应同样在翻倍。<br />
+2. 资金与排他性协议的重组机制<br />
+英伟达正在利用其庞大的现金流，通过大额预付款与“不取货制裁”（Take-or-pay）长期协议，将三大厂未来两到三年的高阶产能进行了深度锁死。这种市场机制导致：<br />
+<br />
+三大厂的产能能够基本支撑英伟达的绝对核心订单（即英伟达拿走了绝大部分有效供给）。<br />
+<br />
+但这种锁死极大地挤压了其余云巨头（如谷歌、亚马逊自研芯片）以及标准服务器/消费电子市场的 DRAM 分配额度，造成整体行业的结构性整体短缺。<br />
+<br />
+一、 三大存储厂的产能扩张规划与刚性硬约束（2026 - 2028）<br />
+三大厂目前正在进行有史以来最大规模的资本开支扩张，但实际有效位元产出（Bit Growth）的释放受到物理周期的严格硬约束。<br />
+<br />
+1. SK 海力士 (SK Hynix)<br />
+<br />
+产能现状与规划：其 2026 年的 HBM 产能已全部售罄。目前正在加速推进韩国清州 M15X 厂以及龙仁集群首座 Fab 的建设，预计新产能要在 2027 年底至 2028 年初才能大规模实现片级产出。<br />
+<br />
+核心变量：SK 海力士明确指出，未来三年客户对 HBM 的确切订单需求已经超过了其理论供货上限。由于其正在向定制化 HBM（与英伟达共同开发）转型，这部分产线实质上已从标准存储市场中永久抽离。<br />
+<br />
+2. 三星电子 (Samsung)<br />
+<br />
+产能现状与规划：2026 年 HBM 销售目标拟实现同比 3 倍以上的增幅。目前三星已对外宣告启动 HBM4 的量产出货，并针对平泽 5 厂（P5）规划了高达 60 万亿韩元的总投资，但该晶圆厂的正式投产节点挂钩在 2028 年。<br />
+<br />
+核心变量：前期的先进封装良率瓶颈（如 TC-NCF 工艺在高层数堆叠中的表现）虽在逐步收敛，但其 4nm 逻辑工艺底座（Base Die）的代工产能分配与前道良率，是决定其未来两年 HBM4 整体出货斜率的关键变数。<br />
+<br />
+3. 美光科技 (Micron)<br />
+<br />
+产能现状与规划：美光将 2026 财年的资本开支大幅拉高至 250 亿美元以上，其采用 1-gamma 制程节点的 HBM4（36GB 12高堆叠）已于 2026 年 Q1 进入高产出阶段，专为英伟达的 Vera Rubin GPU 平台定制。<br />
+<br />
+核心变量：美光在 2026 及 2027 年的 HBM 供货已被长期绑定条款（Binding Terms）完全锁定。其在美国本土规划的超大型先进封装与制造基地，产能量产窗口同样落在了 2028 年。<br />
+<br />
+4. 行业共同的刚性硬约束<br />
+<br />
+无尘室（Cleanroom）天花板：当前行业共识表明，制约产能扩张的核心瓶颈不是设备采购意愿，而是无尘室的建设周期。从打桩到达到合规标准存在 18 到 24 个月的刚性物理周期，这意味着 2027 年年中之前，全球不会有大批量的全新 DRAM 厂房投入使用。<br />
+<br />
+HBM4 晶圆消耗倍率：由于 HBM4 引入了 2048-bit 接口位宽，其底部的控制底座必须转由台积电等晶圆厂的先进逻辑制程（如 N4/N5）代工。这种前道逻辑工艺与后道三维堆叠的异质整合，导致其制造周期拉长，单片 HBM4 对晶圆的消耗量达到了传统标准 DRAM 的 3 至 4 倍。</p>
+<img src=""https://nitter.net/pic/media%2FHIfIJbmWYAAa6hO.jpg"" />
+
+<hr />
+<blockquote>
+<b>Trade Whisperer (@TradexWhisperer)</b>
+<p>
+<p><a href=""https://nitter.net/search?f=tweets&amp;q=%23MU"">$MU</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23DRAM"">$DRAM</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23TSM"">$TSM</a> Holy Shit<br />
+<br />
+2026: 12 HBM stacks per substrate<br />
+2029: 64 HBM stacks with SoW<br />
+<br />
+That is a 5x structural expansion of HBM demand per system. The memory content per platform is not peaking. It is just getting started.</p>
+<img src=""https://nitter.net/pic/media%2FHIVhqb4aoAEneUs.png"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/TradexWhisperer/status/2055226935249371381#m"">https://nitter.net/TradexWhisperer/status/2055226935249371381#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2055831835381297247#m,2026-05-17 02:04:39,2026-05-19 08:42:14
+2055833660729840122,"<p>同时我也比较好奇，人类为什么能接受光互连的股票给几十倍上百倍的pe把它们定义成高成长股。难道光互连就都不能扩产把这个产业卷死？只有存储会卷死？真实情况哪个门槛更高？<br />
+所以真相信AI的未来，就应该相信存储，毕竟唯一真有业绩也pe足够低。<br />
+同时大家结局都是一样。需求崩，所有半导体行业一起死，需求持续暴增，大家一起欣欣向荣。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>人类很难能获得远视来看清当下。<br />
+<br />
+近三年的英伟达单卡显存容量实现了接近 3.6 倍的增幅。<br />
+而未来三年HBM端的需求会暴增5倍。<br />
+<br />
+现在绝大多数人对存储股的恐惧是涨太多和能否真正跨越周期，这里可以直接跟英伟达绑定，如果存储股不能跨过周期，那么说明英伟达销量没有持续爆涨AI需求被证伪。<br />
+很显然，英伟达的增长依然强劲，AI的需求从全球token用量的增幅可以直观看到。<br />
+黄仁勋说未来AI对算力的需求是千倍，同理对存储也一样是这个倍数。<br />
+<br />
+你相信AI革命是真的会发生，因为AI的消费品是算力，存储，光互连，那么可以变相理解为存储会转变成长股，同理AI革命确实在发生。<br />
+<br />
+那么就可以简单理解如果你能接受英伟达因为Ai革命的而持续增长，因为英伟达的估值是成长股估值，实际上就承认了存储股已经转变成长股pe应当享受成长股估值，俩者本质上不可能单独发生，只是绝大部分人不愿意相信。<br />
+<br />
+一、 英伟达侧的需求杠杆与虹吸效应<br />
+英伟达对 DRAM（尤其是 HBM）的绝对需求量正在经历代际间的级数放大，这构成了对全球存储产能的强制重组。<br />
+1. 代际规格的容量/频宽消耗弹性<br />
+<br />
+Blackwell Ultra 时代（2026年上半年）：单卡对 HBM3e 的消耗量直接推升至 288GB。<br />
+<br />
+Vera Rubin 时代（2026年底 - 2027年）：全面切入 HBM4 标准，单卡起步容量维持在 288GB，但后续 Ultra 版本预计将上探至 384GB 或 512GB。<br />
+<br />
+系统 DRAM 的二次放大：与 Rubin 架构配套的 Vera CPU 将单插槽的 LPDDR5X 主存支持容量从 Grace 的 480GB 垂直拔高至 1.5TB。这意味着单台高级 AI 机柜对普通大容量 DRAM 的抽血效应同样在翻倍。<br />
+2. 资金与排他性协议的重组机制<br />
+英伟达正在利用其庞大的现金流，通过大额预付款与“不取货制裁”（Take-or-pay）长期协议，将三大厂未来两到三年的高阶产能进行了深度锁死。这种市场机制导致：<br />
+<br />
+三大厂的产能能够基本支撑英伟达的绝对核心订单（即英伟达拿走了绝大部分有效供给）。<br />
+<br />
+但这种锁死极大地挤压了其余云巨头（如谷歌、亚马逊自研芯片）以及标准服务器/消费电子市场的 DRAM 分配额度，造成整体行业的结构性整体短缺。<br />
+<br />
+一、 三大存储厂的产能扩张规划与刚性硬约束（2026 - 2028）<br />
+三大厂目前正在进行有史以来最大规模的资本开支扩张，但实际有效位元产出（Bit Growth）的释放受到物理周期的严格硬约束。<br />
+<br />
+1. SK 海力士 (SK Hynix)<br />
+<br />
+产能现状与规划：其 2026 年的 HBM 产能已全部售罄。目前正在加速推进韩国清州 M15X 厂以及龙仁集群首座 Fab 的建设，预计新产能要在 2027 年底至 2028 年初才能大规模实现片级产出。<br />
+<br />
+核心变量：SK 海力士明确指出，未来三年客户对 HBM 的确切订单需求已经超过了其理论供货上限。由于其正在向定制化 HBM（与英伟达共同开发）转型，这部分产线实质上已从标准存储市场中永久抽离。<br />
+<br />
+2. 三星电子 (Samsung)<br />
+<br />
+产能现状与规划：2026 年 HBM 销售目标拟实现同比 3 倍以上的增幅。目前三星已对外宣告启动 HBM4 的量产出货，并针对平泽 5 厂（P5）规划了高达 60 万亿韩元的总投资，但该晶圆厂的正式投产节点挂钩在 2028 年。<br />
+<br />
+核心变量：前期的先进封装良率瓶颈（如 TC-NCF 工艺在高层数堆叠中的表现）虽在逐步收敛，但其 4nm 逻辑工艺底座（Base Die）的代工产能分配与前道良率，是决定其未来两年 HBM4 整体出货斜率的关键变数。<br />
+<br />
+3. 美光科技 (Micron)<br />
+<br />
+产能现状与规划：美光将 2026 财年的资本开支大幅拉高至 250 亿美元以上，其采用 1-gamma 制程节点的 HBM4（36GB 12高堆叠）已于 2026 年 Q1 进入高产出阶段，专为英伟达的 Vera Rubin GPU 平台定制。<br />
+<br />
+核心变量：美光在 2026 及 2027 年的 HBM 供货已被长期绑定条款（Binding Terms）完全锁定。其在美国本土规划的超大型先进封装与制造基地，产能量产窗口同样落在了 2028 年。<br />
+<br />
+4. 行业共同的刚性硬约束<br />
+<br />
+无尘室（Cleanroom）天花板：当前行业共识表明，制约产能扩张的核心瓶颈不是设备采购意愿，而是无尘室的建设周期。从打桩到达到合规标准存在 18 到 24 个月的刚性物理周期，这意味着 2027 年年中之前，全球不会有大批量的全新 DRAM 厂房投入使用。<br />
+<br />
+HBM4 晶圆消耗倍率：由于 HBM4 引入了 2048-bit 接口位宽，其底部的控制底座必须转由台积电等晶圆厂的先进逻辑制程（如 N4/N5）代工。这种前道逻辑工艺与后道三维堆叠的异质整合，导致其制造周期拉长，单片 HBM4 对晶圆的消耗量达到了传统标准 DRAM 的 3 至 4 倍。</p>
+<img src=""https://nitter.net/pic/media%2FHIfIJbmWYAAa6hO.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2055831835381297247#m"">https://nitter.net/xiaomustock/status/2055831835381297247#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2055833660729840122#m,2026-05-17 02:11:54,2026-05-19 08:42:14
+2055863164420452411,"<p>这里面的 <a href=""https://nitter.net/search?f=tweets&amp;q=%23中韩半导体"">#中韩半导体</a> ，我6.2把最后一半清仓了。35%溢价不值得拿中韩，清仓的钱基本上梭哈了 <a href=""https://nitter.net/search?f=tweets&amp;q=%23湖南裕能"">#湖南裕能</a> 和 <a href=""https://nitter.net/search?f=tweets&amp;q=%23天华新能"">#天华新能</a> 。<br />
+赌一个市场对原油影响的低估，油价长期维持高位对储能的需求会持续扩大。就是市场目前都扎堆在光和存储，没有资金对储能炒作。</p>
+<img src=""https://nitter.net/pic/media%2FHIfkpNCW4AA_HtW.jpg"" />
+
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>目前能买到包含海力士和三星股票的etf有<br />
+1.a股的中韩半导体etf<br />
+2.美股的FLXK<br />
+3.港股的俩倍做多海力士/三星.<br />
+不推荐的是第三个，前俩个有正股不怕横盘磨损.当然也可以都买，成年人不做选择.</p>
+<img src=""https://nitter.net/pic/media%2FG_pOMO-XsAAwG7I.jpg"" />
+
+<img src=""https://nitter.net/pic/media%2FG_pOMPJXcAEKEfL.jpg"" />
+
+<img src=""https://nitter.net/pic/media%2FG_pOMOibAAEJFT1.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2016009765944754560#m"">https://nitter.net/xiaomustock/status/2016009765944754560#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2055863164420452411#m,2026-05-17 04:09:09,2026-05-19 08:42:14
+2055957799314522476,"<p>长鑫科技上半年净利润660-750亿人民币，差不多100亿美金了，相当于一个闪迪的水平。<br />
+存储还是都太低估了，赶紧重估吧。<br />
+周一继续加仓 <a href=""https://nitter.net/search?f=tweets&amp;q=%23DRAM"">$DRAM</a></p>
+<img src=""https://nitter.net/pic/media%2FHIg6tkdWMAAOSzp.jpg"" />",https://nitter.net/xiaomustock/status/2055957799314522476#m,2026-05-17 10:25:11,2026-05-19 08:42:14
+2055958440627880157,"<p>根据铠侠和长鑫的业绩，很明显能反推出来，整个存储行业二季度利润都要在一季度基础上再翻一倍这么恐怖。<br />
+涨价的过程成本占比不变，利润提升的倍数会比涨价幅度大。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>铠侠：预计第一季度净利润为56亿美金。高于市场预估39.5亿美金。<br />
+铠侠公布第四季度净利润为26亿美金，高于市场预期的23亿美金；<br />
+科普一下。<br />
+<br />
+1. 第四季度 (Q4)：1月 — 3月<br />
+具体时段： 2026年1月1日 — 2026年3月31日。这是铠侠 2025财年 的最后一个季<br />
+2. 第一季度 (Q1)：4月 — 6月<br />
+具体时段： 2026年4月1日 — 2026年6月30日。这是铠侠 2026财年 的开端。<br />
+<br />
+也就是说存储股二季度业绩报实际情况还要再翻一倍。<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23MU"">$MU</a> 季度净利润再翻一倍，净利润270亿美金。市值9000亿美金<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23SNDK"">$SNDK</a> 季度净利润再翻一倍，净利润70亿美金。市值2000亿美金。<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23海力士"">#海力士</a> 季度净利润再翻一倍，520亿美金。<br />
+市值8600亿美金。<br />
+<br />
+所以有啥理由不看好存储。</p>
+<img src=""https://nitter.net/pic/media%2FHIWCnQzakAA3wio.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2055192426093133954#m"">https://nitter.net/xiaomustock/status/2055192426093133954#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2055958440627880157#m,2026-05-17 10:27:44,2026-05-19 08:42:14
+2056056181894905899,"<p>比起账户亏损，错失时代才是普通人最大的风险。<br />
+你爸妈错失2000年的房地产和互联网导致你家族如今的贫困，<br />
+你的持续观望导致错失如今的AI革命，<br />
+会导致你下一代下下代永远生活在社会底层，<br />
+这个时段不能梭哈赚取财富，那么等AI站起来的时候所有普通人只能沦为毫无用处的人体电池，你连劳动的资格都没了，更别提赚取财富。<br />
+也很可能是人类文明里最后一次属于碳基生物机会。</p>
+<img src=""https://nitter.net/pic/media%2FHIiUMcHXUAAHkF8.jpg"" />
+
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>2026全年这段时间非常值钱，<br />
+每一分钱不在AI或者存储上，<br />
+都是在巨额亏损，<br />
+人类历史上有仅有一次的AI浪潮，<br />
+你的人生也有且仅有一次。</p>
+<a href=""https://nitter.net/xiaomustock/status/2053663761777754427#m"">
+<br />Video<br />
+  <img src=""https://nitter.net/pic/amplify_video_thumb%2F2053663279504146432%2Fimg%2F8PIKRyKy2IhPxVBb.jpg"" />
+</a>
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2053663761777754427#m"">https://nitter.net/xiaomustock/status/2053663761777754427#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2056056181894905899#m,2026-05-17 16:56:08,2026-05-19 08:42:14
+2056058643729035674,"<p>如果2026年可能因为坚守导致你巨亏，<br />
+那么也是你人生中最值得巨额亏损也要扛住的一年，<br />
+要么赌对AI革命赚取无数倍，<br />
+要么重新再来。<br />
+亏钱也必须心甘情愿的赌这一年。<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23DRAM"">$DRAM</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MU"">$MU</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23SNDK"">$SNDK</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%232x海力士做多etf"">#2x海力士做多etf</a></p>",https://nitter.net/xiaomustock/status/2056058643729035674#m,2026-05-17 17:05:55,2026-05-19 08:42:14
+2056060009407017286,"<p>这一年对任何看跌看空的言论无脑屏蔽，毁我道心者如杀人父母。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>如果2026年可能因为坚守导致你巨亏，<br />
+那么也是你人生中最值得巨额亏损也要扛住的一年，<br />
+要么赌对AI革命赚取无数倍，<br />
+要么重新再来。<br />
+亏钱也必须心甘情愿的赌这一年。<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23DRAM"">$DRAM</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23MU"">$MU</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23SNDK"">$SNDK</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%232x海力士做多etf"">#2x海力士做多etf</a></p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2056058643729035674#m"">https://nitter.net/xiaomustock/status/2056058643729035674#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2056060009407017286#m,2026-05-17 17:11:20,2026-05-19 08:42:14
+2056169331138982286,<p>夜盘又崩了，特朗普是一点不安生呐，人类有史以来最强交易员特朗普.</p>,https://nitter.net/xiaomustock/status/2056169331138982286#m,2026-05-18 00:25:44,2026-05-19 08:42:14
+2056175295061688330,"<p>三星如果真罢工，对存储是利好而不是利空，这不产能认为的又少一大截。</p>
+<img src=""https://nitter.net/pic/media%2FHIkAh24W0AAJ8Uq.jpg"" />",https://nitter.net/xiaomustock/status/2056175295061688330#m,2026-05-18 00:49:26,2026-05-19 08:42:14
+2056179915775471827,"<p>美股有一类可以小额关注的产品，风投基金etf，<br />
+比如 <a href=""https://nitter.net/search?f=tweets&amp;q=%23RVI"">$RVI</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23DXYZ"">$DXYZ</a> <a href=""https://nitter.net/search?f=tweets&amp;q=%23VCX"">$VCX</a> <br />
+他们会包含一些未上市明星股的股权。</p>
+<img src=""https://nitter.net/pic/media%2FHIkEuZgXkAEuMab.jpg"" />
+
+<img src=""https://nitter.net/pic/media%2FHIkEuZRXwAA6OVd.jpg"" />
+
+<img src=""https://nitter.net/pic/media%2FHIkEuZRXUAAylUR.jpg"" />",https://nitter.net/xiaomustock/status/2056179915775471827#m,2026-05-18 01:07:48,2026-05-19 08:42:14
+2056191542969143666,"<p>现在只要不AI，就是跌，没有理由<br />
+必须全方位无死角拥抱AI。</p>",https://nitter.net/xiaomustock/status/2056191542969143666#m,2026-05-18 01:54:00,2026-05-19 08:42:14
+2056202892676153497,"<p>很多人说AI涨太高了，是不是就等你上车，<br />
+<br />
+对应互联网1994-2000年炒作期，<br />
+你觉得你现在在ai诞生的路上是哪一年，<br />
+2000年以后虽然有所谓的互联网泡沫，<br />
+但是谷歌，苹果，英伟达，微软都拉了数百倍到今年，<br />
+他们都是互联网诞生的伟大公司。</p>",https://nitter.net/xiaomustock/status/2056202892676153497#m,2026-05-18 02:39:06,2026-05-19 08:42:14
+2056209185612656961,"<p>AI的消费品里赚钱最多的就是存储，<br />
+唯一目前体现在业绩上的。<br />
+<a href=""https://nitter.net/search?f=tweets&amp;q=%23DRAM"">$DRAM</a> 捏到至少美光海力士的市盈率被重估成长股pe</p>
+<img src=""https://nitter.net/pic/media%2FHIkfWM3WgAAz5FG.jpg"" />",https://nitter.net/xiaomustock/status/2056209185612656961#m,2026-05-18 03:04:07,2026-05-19 08:42:14
+2056289190287913322,"<p>千万别把自己看的太重要也别把某些人的操作看的很重，AI方向就是历史的方向，回头看都要扇自己大嘴巴子，哪那么轻易去让所有人都觉得应该下车，而且让顺利下车，疯狂还没开始。早晚都会重新高价买回来。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>很多人说AI涨太高了，是不是就等你上车，<br />
+<br />
+对应互联网1994-2000年炒作期，<br />
+你觉得你现在在ai诞生的路上是哪一年，<br />
+2000年以后虽然有所谓的互联网泡沫，<br />
+但是谷歌，苹果，英伟达，微软都拉了数百倍到今年，<br />
+他们都是互联网诞生的伟大公司。</p>
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2056202892676153497#m"">https://nitter.net/xiaomustock/status/2056202892676153497#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2056289190287913322#m,2026-05-18 08:22:01,2026-05-19 08:42:14
+2056384734104527132,"<p>盘前都暴涨，一开盘都暴跌，<br />
+那种天天一睁眼就赚钱的容易钱没了。<br />
+这阶段博弈和分歧猛烈，<br />
+互道傻逼的阶段。<br />
+搞不好得熬到下个财报。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>很多朋友问存储是不到头了，我觉得没到，<br />
+但可以用另外一句话说：<br />
+存储容易的钱已经赚完了，<br />
+后面的钱赚起来比较困难，<br />
+<br />
+会有fud会有估值模型变化等等，<br />
+赚起来比较曲折。</p>
+<img src=""https://nitter.net/pic/media%2FHIbSIC6XUAEpB7S.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2055561340505174187#m"">https://nitter.net/xiaomustock/status/2055561340505174187#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2056384734104527132#m,2026-05-18 14:41:41,2026-05-19 08:42:14
+2056387207674409056,"<p>血流成河</p>
+<img src=""https://nitter.net/pic/media%2FHInBQbBXUAAXf-h.jpg"" />",https://nitter.net/xiaomustock/status/2056387207674409056#m,2026-05-18 14:51:30,2026-05-19 08:42:14
+2056417431711514764,<p>$MUU利润跌没了，亏10%了今天跌太狠账户不敢打开看了。</p>,https://nitter.net/xiaomustock/status/2056417431711514764#m,2026-05-18 16:51:36,2026-05-19 08:42:14
+2056635176915013894,"<p>投资要相信自己相信的东西，<br />
+然后全力以赴梭哈，<br />
+剩下的交给命运。</p>
+<hr />
+<blockquote>
+<b>川沐｜Trumoo🐮 (@xiaomustock)</b>
+<p>
+<p>想清楚自己为什么买，<br />
+卖的话要想清楚自己买的原因变了没有？<br />
+没变那你卖的想法只是情绪。</p>
+<img src=""https://nitter.net/pic/media%2FHIITG9LXUAAsVGD.jpg"" />
+
+<img src=""https://nitter.net/pic/media%2FHIITG9LWIAEK6-7.jpg"" />
+
+
+</p>
+<footer>
+— <cite><a href=""https://nitter.net/xiaomustock/status/2054225403233837219#m"">https://nitter.net/xiaomustock/status/2054225403233837219#m</a>
+</footer>
+</blockquote>",https://nitter.net/xiaomustock/status/2056635176915013894#m,2026-05-19 07:16:51,2026-05-19 08:42:14
+2056642879943053547,"<p>克服大跌的时候不敢买股票，<br />
+暴涨的时候反而追仓。</p>",https://nitter.net/xiaomustock/status/2056642879943053547#m,2026-05-19 07:47:27,2026-05-19 08:42:14

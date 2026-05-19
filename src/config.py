@@ -3,11 +3,8 @@ from pathlib import Path
 
 # Fallback Nitter mirrors used when XT_NITTER_INSTANCES env var is not set.
 _DEFAULT_INSTANCES = [
-    "https://nitter.net",
-    "https://nitter.privacydev.net",
-    "https://nitter.poast.org",
-    "https://nitter.lacontrevoie.fr",
-    "https://nitter.moomoo.me",
+    "https://nitter.net"
+    #"https://nitter.poast.org",
 ]
 
 

@@ -150,6 +150,7 @@ def insert_posts(data_dir: str, posts: list[dict]) -> int:
         existing_ids = {p["id"] for p in existing}
         new_posts = [p for p in author_posts if p["id"] not in existing_ids]
         if new_posts:
+            new_posts.sort(key=lambda p: p.get("published_at") or "")
             _append_posts(data_dir, username, new_posts)
             inserted += len(new_posts)
     return inserted

@@ -28,7 +28,7 @@ def _format_relative(when: str | None) -> str:
     if not when:
         return "unknown time"
     try:
-        for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S"):
+        for fmt in ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%S", "%a, %d %b %Y %H:%M:%S %z"):
             try:
                 dt = datetime.strptime(when, fmt)
                 break

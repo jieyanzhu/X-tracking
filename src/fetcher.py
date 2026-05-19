@@ -1,9 +1,20 @@
 import logging
 import random
+from datetime import datetime, timezone
+
 import feedparser
 import httpx
 
 logger = logging.getLogger(__name__)
+
+
+def _normalize_date(entry: dict) -> str | None:
+    """Convert feedparser's parsed date to ISO 8601 so string sorting works."""
+    parsed = entry.get("published_parsed") or entry.get("updated_parsed")
+    if parsed and parsed[0] >= 2000:
+        dt = datetime(*parsed[:6], tzinfo=timezone.utc)
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+    return entry.get("published") or entry.get("updated") or None
 
 
 class FetchError(Exception):
@@ -72,7 +83,7 @@ def _parse_rss(content: bytes) -> tuple[list[dict], str | None]:
 
         content_text = entry.get("description") or entry.get("title") or ""
         url = entry.get("link") or ""
-        published = entry.get("published") or None
+        published = _normalize_date(entry)
 
         posts.append({
             "id": str(post_id),
